@@ -281,8 +281,15 @@ Blockly.Blocks['sensing_mousedown'] = {
    * @this Blockly.Block
    */
   init: function() {
+    var isMobile = false;
+    if (window.cordova && (window.cordova.platformId === 'ios' || window.cordova.platformId === 'android') ||
+      navigator.userAgent.indexOf('Mobile') > -1) {
+      isMobile = true;
+    }
+    var SENSING_MOUSEDOWN = Blockly.Msg.SENSING_MOUSEDOWN;
+    var SENSING_MOUSEDOWN_MOBILE = Blockly.Msg.SENSING_MOUSEDOWN_MOBILE;
     this.jsonInit({
-      "message0": Blockly.Msg.SENSING_MOUSEDOWN,
+      "message0": isMobile ? SENSING_MOUSEDOWN_MOBILE : SENSING_MOUSEDOWN,
       "category": Blockly.Categories.sensing,
       "extensions": ["colours_sensing", "output_boolean"]
     });
@@ -295,8 +302,15 @@ Blockly.Blocks['sensing_mousex'] = {
    * @this Blockly.Block
    */
   init: function() {
+    var isMobile = false;
+    if (window.cordova && (window.cordova.platformId === 'ios' || window.cordova.platformId === 'android') ||
+      navigator.userAgent.indexOf('Mobile') > -1) {
+      isMobile = true;
+    }
+    var SENSING_MOUSEX = Blockly.Msg.SENSING_MOUSEX;
+    var SENSING_MOUSEX_MOBILE = Blockly.Msg.SENSING_MOUSEX_MOBILE;
     this.jsonInit({
-      "message0": Blockly.Msg.SENSING_MOUSEX,
+      "message0": isMobile ? SENSING_MOUSEX_MOBILE : SENSING_MOUSEX,
       "category": Blockly.Categories.sensing,
       "extensions": ["colours_sensing", "output_number"]
     });
@@ -309,8 +323,15 @@ Blockly.Blocks['sensing_mousey'] = {
    * @this Blockly.Block
    */
   init: function() {
+    var isMobile = false;
+    if (window.cordova && (window.cordova.platformId === 'ios' || window.cordova.platformId === 'android') ||
+      navigator.userAgent.indexOf('Mobile') > -1) {
+      isMobile = true;
+    }
+    var SENSING_MOUSEY= Blockly.Msg.SENSING_MOUSEY;
+    var SENSING_MOUSEY_MOBILE = Blockly.Msg.SENSING_MOUSEY_MOBILE;
     this.jsonInit({
-      "message0": Blockly.Msg.SENSING_MOUSEY,
+      "message0": isMobile ? SENSING_MOUSEY_MOBILE : SENSING_MOUSEY,
       "category": Blockly.Categories.sensing,
       "extensions": ["colours_sensing", "output_number"]
     });

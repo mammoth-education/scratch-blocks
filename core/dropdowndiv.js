@@ -253,7 +253,17 @@ Blockly.DropDownDiv.show = function(owner, primaryX, primaryY, secondaryX, secon
   // where the drop-down is absolutely positioned.
   var dx = (metrics.finalX - metrics.initialX);
   var dy = (metrics.finalY - metrics.initialY);
-  div.style.transform = 'translate(' + dx + 'px,' + dy + 'px)';
+  if(owner.argType_ && owner.argType_ .length > 1){
+    if(metrics.arrowAtTop){
+      div.style.transformOrigin = 'top'
+    }else{
+      div.style.transformOrigin = 'bottom'
+    }
+    div.style.transform = 'scale(0.7)translate(' + dx + 'px,' + dy + 'px)';
+  }else{
+    div.style.transform = 'translate(' + dx + 'px,' + dy + 'px)';
+  }
+  
   return metrics.arrowAtTop;
 };
 
