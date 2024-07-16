@@ -27,13 +27,17 @@ goog.require('Blockly.Colours');
 goog.require('Blockly.constants');
 goog.require('Blockly.ScratchBlocks.VerticalExtensions');
 
-
+var isMobile = false;
+if (window.cordova && (window.cordova.platformId === 'ios' || window.cordova.platformId === 'android') ||
+  navigator.userAgent.indexOf('Mobile') > -1) {
+  isMobile = false;
+}
 Blockly.Blocks['motion_movesteps'] = {
   /**
    * Block to move steps.
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.jsonInit({
       "message0": Blockly.Msg.MOTION_MOVESTEPS,
       "args0": [
@@ -53,7 +57,7 @@ Blockly.Blocks['motion_turnright'] = {
    * Block to turn right.
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.jsonInit({
       "message0": Blockly.Msg.MOTION_TURNRIGHT,
       "args0": [
@@ -79,7 +83,7 @@ Blockly.Blocks['motion_turnleft'] = {
    * Block to turn left.
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.jsonInit({
       "message0": Blockly.Msg.MOTION_TURNLEFT,
       "args0": [
@@ -105,7 +109,7 @@ Blockly.Blocks['motion_pointindirection'] = {
    * Block to point in direction.
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.jsonInit({
       "message0": Blockly.Msg.MOTION_POINTINDIRECTION,
       "args0": [
@@ -125,7 +129,7 @@ Blockly.Blocks['motion_pointtowards_menu'] = {
    * Point towards drop-down menu.
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.jsonInit({
       "message0": "%1",
       "args0": [
@@ -133,7 +137,7 @@ Blockly.Blocks['motion_pointtowards_menu'] = {
           "type": "field_dropdown",
           "name": "TOWARDS",
           "options": [
-            [Blockly.Msg.MOTION_POINTTOWARDS_POINTER, '_mouse_'],
+            [isMobile ? Blockly.Msg.MOTION_POINTTOWARDS_POINTER_MOBILE : Blockly.Msg.MOTION_POINTTOWARDS_POINTER, '_mouse_'],
             [Blockly.Msg.MOTION_POINTTOWARDS_RANDOM, '_random_']
           ]
         }
@@ -151,7 +155,7 @@ Blockly.Blocks['motion_pointtowards'] = {
    * Block to point in direction.
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.jsonInit({
       "message0": Blockly.Msg.MOTION_POINTTOWARDS,
       "args0": [
@@ -171,7 +175,7 @@ Blockly.Blocks['motion_goto_menu'] = {
    * Go to drop-down menu.
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.jsonInit({
       "message0": "%1",
       "args0": [
@@ -179,7 +183,7 @@ Blockly.Blocks['motion_goto_menu'] = {
           "type": "field_dropdown",
           "name": "TO",
           "options": [
-            [Blockly.Msg.MOTION_GOTO_POINTER, '_mouse_'],
+            [isMobile ? Blockly.Msg.MOTION_GOTO_POINTER_MOBILE : Blockly.Msg.MOTION_GOTO_POINTER, '_mouse_'],
             [Blockly.Msg.MOTION_GOTO_RANDOM, '_random_']
           ]
         }
@@ -197,7 +201,7 @@ Blockly.Blocks['motion_gotoxy'] = {
    * Block to go to X, Y.
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.jsonInit({
       "message0": Blockly.Msg.MOTION_GOTOXY,
       "args0": [
@@ -221,7 +225,7 @@ Blockly.Blocks['motion_goto'] = {
    * Block to go to a menu item.
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.jsonInit({
       "message0": Blockly.Msg.MOTION_GOTO,
       "args0": [
@@ -241,7 +245,7 @@ Blockly.Blocks['motion_glidesecstoxy'] = {
    * Block to glide for a specified time.
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.jsonInit({
       "message0": Blockly.Msg.MOTION_GLIDESECSTOXY,
       "args0": [
@@ -269,7 +273,7 @@ Blockly.Blocks['motion_glideto_menu'] = {
    * Glide to drop-down menu
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.jsonInit({
       "message0": "%1",
       "args0": [
@@ -277,7 +281,7 @@ Blockly.Blocks['motion_glideto_menu'] = {
           "type": "field_dropdown",
           "name": "TO",
           "options": [
-            [Blockly.Msg.MOTION_GLIDETO_POINTER, '_mouse_'],
+            [isMobile ? Blockly.Msg.MOTION_GLIDETO_POINTER_MOBILE : Blockly.Msg.MOTION_GLIDETO_POINTER, '_mouse_'],
             [Blockly.Msg.MOTION_GLIDETO_RANDOM, '_random_']
           ]
         }
@@ -295,7 +299,7 @@ Blockly.Blocks['motion_glideto'] = {
    * Block to glide to a menu item
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.jsonInit({
       "message0": Blockly.Msg.MOTION_GLIDETO,
       "args0": [
@@ -319,7 +323,7 @@ Blockly.Blocks['motion_changexby'] = {
    * Block to change X.
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.jsonInit({
       "message0": Blockly.Msg.MOTION_CHANGEXBY,
       "args0": [
@@ -339,7 +343,7 @@ Blockly.Blocks['motion_setx'] = {
    * Block to set X.
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.jsonInit({
       "message0": Blockly.Msg.MOTION_SETX,
       "args0": [
@@ -359,7 +363,7 @@ Blockly.Blocks['motion_changeyby'] = {
    * Block to change Y.
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.jsonInit({
       "message0": Blockly.Msg.MOTION_CHANGEYBY,
       "args0": [
@@ -379,7 +383,7 @@ Blockly.Blocks['motion_sety'] = {
    * Block to set Y.
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.jsonInit({
       "message0": Blockly.Msg.MOTION_SETY,
       "args0": [
@@ -399,7 +403,7 @@ Blockly.Blocks['motion_ifonedgebounce'] = {
    * Block to bounce on edge.
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.jsonInit({
       "message0": Blockly.Msg.MOTION_IFONEDGEBOUNCE,
       "category": Blockly.Categories.motion,
@@ -413,7 +417,7 @@ Blockly.Blocks['motion_setrotationstyle'] = {
    * Block to set rotation style.
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.jsonInit({
       "message0": Blockly.Msg.MOTION_SETROTATIONSTYLE,
       "args0": [
@@ -438,7 +442,7 @@ Blockly.Blocks['motion_xposition'] = {
    * Block to report X.
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.jsonInit({
       "message0": Blockly.Msg.MOTION_XPOSITION,
       "category": Blockly.Categories.motion,
@@ -453,7 +457,7 @@ Blockly.Blocks['motion_yposition'] = {
    * Block to report Y.
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.jsonInit({
       "message0": Blockly.Msg.MOTION_YPOSITION,
       "category": Blockly.Categories.motion,
@@ -468,7 +472,7 @@ Blockly.Blocks['motion_direction'] = {
    * Block to report direction.
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.jsonInit({
       "message0": Blockly.Msg.MOTION_DIRECTION,
       "category": Blockly.Categories.motion,
@@ -485,7 +489,7 @@ Blockly.Blocks['motion_scroll_right'] = {
    * projects.
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.jsonInit({
       "message0": Blockly.Msg.MOTION_SCROLLRIGHT,
       "args0": [
@@ -507,7 +511,7 @@ Blockly.Blocks['motion_scroll_up'] = {
    * projects.
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.jsonInit({
       "message0": Blockly.Msg.MOTION_SCROLLUP,
       "args0": [
@@ -529,7 +533,7 @@ Blockly.Blocks['motion_align_scene'] = {
    * with Scratch 2.0 projects.
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.jsonInit({
       "message0": Blockly.Msg.MOTION_ALIGNSCENE,
       "args0": [
@@ -558,7 +562,7 @@ Blockly.Blocks['motion_xscroll'] = {
    * compatibility with Scratch 2.0 projects.
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.jsonInit({
       "message0": Blockly.Msg.MOTION_XSCROLL,
       "category": Blockly.Categories.motion,
@@ -574,7 +578,7 @@ Blockly.Blocks['motion_yscroll'] = {
    * compatibility with Scratch 2.0 projects.
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.jsonInit({
       "message0": Blockly.Msg.MOTION_YSCROLL,
       "category": Blockly.Categories.motion,

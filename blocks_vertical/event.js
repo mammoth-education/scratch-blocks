@@ -32,7 +32,7 @@ Blockly.Blocks['event_whentouchingobject'] = {
    * Block for when a sprite is touching an object.
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.jsonInit({
       "message0": Blockly.Msg.EVENT_WHENTOUCHINGOBJECT,
       "args0": [
@@ -52,7 +52,12 @@ Blockly.Blocks['event_touchingobjectmenu'] = {
    * "Touching [Object]" Block Menu.
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
+    var isMobile = false;
+    if (window.cordova && (window.cordova.platformId === 'ios' || window.cordova.platformId === 'android') ||
+      navigator.userAgent.indexOf('Mobile') > -1) {
+      isMobile = false;
+    }
     this.jsonInit({
       "message0": "%1",
       "args0": [
@@ -60,7 +65,7 @@ Blockly.Blocks['event_touchingobjectmenu'] = {
           "type": "field_dropdown",
           "name": "TOUCHINGOBJECTMENU",
           "options": [
-            [Blockly.Msg.SENSING_TOUCHINGOBJECT_POINTER, '_mouse_'],
+            [isMobile ? Blockly.Msg.SENSING_TOUCHINGOBJECT_POINTER_MOBILE : Blockly.Msg.SENSING_TOUCHINGOBJECT_POINTER, '_mouse_'],
             [Blockly.Msg.SENSING_TOUCHINGOBJECT_EDGE, '_edge_']
           ]
         }
@@ -75,7 +80,7 @@ Blockly.Blocks['event_whenflagclicked'] = {
    * Block for when flag clicked.
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.jsonInit({
       "id": "event_whenflagclicked",
       "message0": Blockly.Msg.EVENT_WHENFLAGCLICKED,
@@ -99,7 +104,7 @@ Blockly.Blocks['event_whenthisspriteclicked'] = {
    * Block for when this sprite clicked.
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.jsonInit({
       "message0": Blockly.Msg.EVENT_WHENTHISSPRITECLICKED,
       "category": Blockly.Categories.event,
@@ -114,7 +119,7 @@ Blockly.Blocks['event_whenstageclicked'] = {
    * Block for when the stage is clicked.
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.jsonInit({
       "message0": Blockly.Msg.EVENT_WHENSTAGECLICKED,
       "category": Blockly.Categories.event,
@@ -128,7 +133,7 @@ Blockly.Blocks['event_whenbroadcastreceived'] = {
    * Block for when broadcast received.
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.jsonInit({
       "id": "event_whenbroadcastreceived",
       "message0": Blockly.Msg.EVENT_WHENBROADCASTRECEIVED,
@@ -151,7 +156,7 @@ Blockly.Blocks['event_whenbackdropswitchesto'] = {
    * Block for when the current backdrop switched to a selected backdrop.
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.jsonInit({
       "message0": Blockly.Msg.EVENT_WHENBACKDROPSWITCHESTO,
       "args0": [
@@ -174,7 +179,7 @@ Blockly.Blocks['event_whengreaterthan'] = {
    * Block for when loudness/timer/video motion is greater than the value.
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.jsonInit({
       "message0": Blockly.Msg.EVENT_WHENGREATERTHAN,
       "args0": [
@@ -202,14 +207,14 @@ Blockly.Blocks['event_broadcast_menu'] = {
    * Broadcast drop-down menu.
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.jsonInit({
       "message0": "%1",
       "args0": [
         {
           "type": "field_variable",
           "name": "BROADCAST_OPTION",
-          "variableTypes":[Blockly.BROADCAST_MESSAGE_VARIABLE_TYPE],
+          "variableTypes": [Blockly.BROADCAST_MESSAGE_VARIABLE_TYPE],
           "variable": Blockly.Msg.DEFAULT_BROADCAST_MESSAGE_NAME
         }
       ],
@@ -226,7 +231,7 @@ Blockly.Blocks['event_broadcast'] = {
    * Block to send a broadcast.
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.jsonInit({
       "id": "event_broadcast",
       "message0": Blockly.Msg.EVENT_BROADCAST,
@@ -247,13 +252,13 @@ Blockly.Blocks['event_broadcastandwait'] = {
    * Block to send a broadcast.
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     this.jsonInit({
       "message0": Blockly.Msg.EVENT_BROADCASTANDWAIT,
       "args0": [
         {
-          "type":"input_value",
-          "name":"BROADCAST_INPUT"
+          "type": "input_value",
+          "name": "BROADCAST_INPUT"
         }
       ],
       "category": Blockly.Categories.event,
@@ -267,7 +272,7 @@ Blockly.Blocks['event_whenkeypressed'] = {
    * Block to send a broadcast.
    * @this Blockly.Block
    */
-  init: function() {
+  init: function () {
     var EVENT_WHENKEYPRESSED_LIST = [
       [Blockly.Msg.EVENT_WHENKEYPRESSED_SPACE, 'space'],
       [Blockly.Msg.EVENT_WHENKEYPRESSED_UP, 'up arrow'],
@@ -312,18 +317,18 @@ Blockly.Blocks['event_whenkeypressed'] = {
       ['8', '8'],
       ['9', '9']
     ]
-    
+
     var MOBILE_EVENT_WHENKEYPRESSED_LIST = [
       [Blockly.Msg.EVENT_WHENKEYPRESSED_UP, 'up arrow'],
       [Blockly.Msg.EVENT_WHENKEYPRESSED_DOWN, 'down arrow'],
       [Blockly.Msg.EVENT_WHENKEYPRESSED_RIGHT, 'right arrow'],
       [Blockly.Msg.EVENT_WHENKEYPRESSED_LEFT, 'left arrow'],
     ]
-    
+
     var isMobile = false;
     if (window.cordova && (window.cordova.platformId === 'ios' || window.cordova.platformId === 'android') ||
-        navigator.userAgent.indexOf('Mobile') > -1) {
-        isMobile = true;
+      navigator.userAgent.indexOf('Mobile') > -1) {
+      isMobile = true;
     }
     this.jsonInit({
       "id": "event_whenkeypressed",
@@ -332,7 +337,7 @@ Blockly.Blocks['event_whenkeypressed'] = {
         {
           "type": "field_dropdown",
           "name": "KEY_OPTION",
-          "options": isMobile ? MOBILE_EVENT_WHENKEYPRESSED_LIST: EVENT_WHENKEYPRESSED_LIST 
+          "options": isMobile ? MOBILE_EVENT_WHENKEYPRESSED_LIST : EVENT_WHENKEYPRESSED_LIST
         }
       ],
       "category": Blockly.Categories.event,
