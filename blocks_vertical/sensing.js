@@ -29,7 +29,7 @@ goog.require('Blockly.ScratchBlocks.VerticalExtensions');
 var isMobile = false;
 if (window.cordova && (window.cordova.platformId === 'ios' || window.cordova.platformId === 'android') ||
   navigator.userAgent.indexOf('Mobile') > -1) {
-  isMobile = false;
+  isMobile = true;
 }
 
 Blockly.Blocks['sensing_touchingobject'] = {
@@ -325,6 +325,7 @@ Blockly.Blocks['sensing_mousex'] = {
       navigator.userAgent.indexOf('Mobile') > -1) {
       isMobile = true;
     }
+    console.log("sensing_mousex",isMobile)
     var SENSING_MOUSEX = Blockly.Msg.SENSING_MOUSEX;
     var SENSING_MOUSEX_MOBILE = Blockly.Msg.SENSING_MOUSEX_MOBILE;
     this.jsonInit({
@@ -348,6 +349,7 @@ Blockly.Blocks['sensing_mousey'] = {
     }
     var SENSING_MOUSEY = Blockly.Msg.SENSING_MOUSEY;
     var SENSING_MOUSEY_MOBILE = Blockly.Msg.SENSING_MOUSEY_MOBILE;
+    console.log("sensing_mousey",isMobile)
     this.jsonInit({
       "message0": isMobile ? SENSING_MOUSEY_MOBILE : SENSING_MOUSEY,
       "category": Blockly.Categories.sensing,

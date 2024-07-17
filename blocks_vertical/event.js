@@ -56,7 +56,7 @@ Blockly.Blocks['event_touchingobjectmenu'] = {
     var isMobile = false;
     if (window.cordova && (window.cordova.platformId === 'ios' || window.cordova.platformId === 'android') ||
       navigator.userAgent.indexOf('Mobile') > -1) {
-      isMobile = false;
+      isMobile = true;
     }
     this.jsonInit({
       "message0": "%1",

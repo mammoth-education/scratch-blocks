@@ -30,7 +30,7 @@ goog.require('Blockly.ScratchBlocks.VerticalExtensions');
 var isMobile = false;
 if (window.cordova && (window.cordova.platformId === 'ios' || window.cordova.platformId === 'android') ||
   navigator.userAgent.indexOf('Mobile') > -1) {
-  isMobile = false;
+  isMobile = true;
 }
 Blockly.Blocks['motion_movesteps'] = {
   /**
